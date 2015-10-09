@@ -18,7 +18,7 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
     var mediaType = ""
     var mediaLink = ""
 
-    var videoURL: NSURL = NSURL(string: "http://www.ebookfrenzy.com/ios_book/movie/movie.mov")!
+    var videoURL: NSURL = NSURL()
     
     var photosArray : [UIImage] = []
     var carouselImageView: UIImageView?
@@ -94,8 +94,9 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
     func loadVideoPlayer() {
         let player = AVPlayer(URL: videoURL)
         let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = self.outputContainerView.frame
+        playerLayer.frame = self.view.frame
         self.view.layer.addSublayer(playerLayer)
+        player.play()
     }
     
     func loadCarousel() {

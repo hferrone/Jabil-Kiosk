@@ -27,6 +27,7 @@ class R_MainMenuViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         checkForExistingScreen()
+        sourceMediaTableView.reloadData()
     }
     
     func checkForExistingScreen() {
@@ -44,14 +45,6 @@ class R_MainMenuViewController: UIViewController {
     func didLoadMedia(mediaArray: [Media]) {
         self.mediaArray = mediaArray
         sourceMediaTableView.reloadData()
-    }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "videoControlsSegueID" {
-            let destination = segue.destinationViewController as! R_VideoControlsViewController
-            destination.videoURL = NSURL(string: "http://www.ebookfrenzy.com/ios_book/movie/movie.mov")!
-            //destination.player = AVPlayer(URL: url!)
-        }
     }
 }
 

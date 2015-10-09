@@ -12,8 +12,6 @@ import AVFoundation
 
 class R_VideoControlsViewController: UIViewController {
 
-    var videoURL: NSURL = NSURL()
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }

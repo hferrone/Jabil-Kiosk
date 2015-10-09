@@ -65,7 +65,6 @@ class AdobeAPI: NSObject {
     
     func getMediaLink(mediaLink: String, completionHandler: (NSArray?) -> Void){
         let urlString = "\(baseURL)\(mediaLink)\(linkEndpoint)"
-        print(urlString)
         let url = NSURL(string: urlString)
         let session = NSURLSession.sharedSession()
         
