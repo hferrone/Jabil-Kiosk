@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Jabil_Kiosk2.0.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>64DDF1141BC6E8D400641EB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>64DDF1281BC6E8D600641EB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>64DDF1331BC6E8D600641EB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
