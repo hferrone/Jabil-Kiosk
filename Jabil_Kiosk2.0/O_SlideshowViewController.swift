@@ -20,7 +20,7 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
 
     var youtubePlayer: YTPlayerView = YTPlayerView()
     var videoURL = String()
-    
+
     var photosArray : [UIImage] = []
     var carouselImageView: UIImageView?
     var itemIndex: Int = 0
@@ -85,21 +85,20 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
         self.outputContainerView.addSubview(documentWebView)
     }
     
-    //    func retrieveVideoURLFromAPI() {
-    //        AdobeAPI.sharedInstance().getMediaLink(mediaLink) { (arrayFromAPI) -> Void in
-    //            if let mediaArray = arrayFromAPI {
-    //                self.videoURL = mediaArray[0] as! String
-    //                self.loadVideoPlayer()
-    //            }
-    //        }
-    //    }
+        func retrieveVideoURLFromAPI() {
+            AdobeAPI.sharedInstance().getMediaLink(mediaLink) { (arrayFromAPI) -> Void in
+                if let mediaArray = arrayFromAPI {
+                    self.videoURL = mediaArray[0] as! String
+                    self.loadVideoPlayer()
+                }
+            }
+        }
     
     func loadVideoPlayer() {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.youtubePlayer.frame = self.view.bounds
             self.view.addSubview(self.youtubePlayer)
-            self.youtubePlayer.loadWithVideoId("hS5CfP8n_js")
-            self.youtubePlayer.playVideo()
+            self.youtubePlayer.loadWithVideoId("M7lc1UVf-VE")
         }
         
         //        let player = AVPlayer(URL: videoURL)

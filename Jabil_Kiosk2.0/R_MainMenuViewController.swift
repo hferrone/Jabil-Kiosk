@@ -56,8 +56,8 @@ extension R_MainMenuViewController: UITableViewDelegate, UITableViewDataSource {
         let outputCell = sourceMediaTableView.dequeueReusableCellWithIdentifier("outputCellID") as! MenuItemTableViewCell
         
         let media = mediaArray[indexPath.row]
-        outputCell.titleLabel.text = media.menuItemText
-        outputCell.subtitleLable.text = media.mediaType
+        outputCell.titleLabel.text = media.menuItemText.uppercaseString
+        outputCell.subtitleLable.text = media.mediaType.uppercaseString
         
         return outputCell
     }

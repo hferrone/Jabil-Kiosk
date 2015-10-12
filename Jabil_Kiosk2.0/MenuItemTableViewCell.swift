@@ -16,7 +16,9 @@ class MenuItemTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = UIColor.blackColor()
+        self.backgroundColor = UIColor.clearColor()
+        titleLabel.text?.uppercaseString
+        subtitleLable.text?.uppercaseString
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
