@@ -13,12 +13,13 @@ import AVFoundation
 class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var outputContainerView: UIView!
-
+    
     var baseURL = "http://usmiscqs001.bgtinside.com:4503"
     var mediaType = ""
     var mediaLink = ""
 
-    var videoURL: NSURL = NSURL()
+    var youtubePlayer: YTPlayerView = YTPlayerView()
+    var videoURL = String()
     
     var photosArray : [UIImage] = []
     var carouselImageView: UIImageView?
@@ -33,6 +34,8 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "cellTapped:", name: "menuCellTapped", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "clickLeftOnSlideshow:", name: "leftSlideClicked", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "clickRightOnSlideshow:", name: "rightSlideClicked", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "playVideo:", name: "playButtonTapped", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pauseVideo:", name: "pauseButtonTapped", object: nil)
     }
     
     func cellTapped(notification: NSNotification) {
@@ -66,7 +69,7 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
             case "document":
                 loadDocument()
             case "video":
-                retrieveVideoURLFromAPI()
+                loadVideoPlayer()
             case "carousel":
                 loadCarousel()
             default:
@@ -82,21 +85,36 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
         self.outputContainerView.addSubview(documentWebView)
     }
     
-    func retrieveVideoURLFromAPI() {
-        AdobeAPI.sharedInstance().getMediaLink(mediaLink) { (arrayFromAPI) -> Void in
-            if let mediaArray = arrayFromAPI {
-                self.videoURL = NSURL(string: mediaArray[0] as! String)!
-                self.loadVideoPlayer()
-            }
-        }
-    }
+    //    func retrieveVideoURLFromAPI() {
+    //        AdobeAPI.sharedInstance().getMediaLink(mediaLink) { (arrayFromAPI) -> Void in
+    //            if let mediaArray = arrayFromAPI {
+    //                self.videoURL = mediaArray[0] as! String
+    //                self.loadVideoPlayer()
+    //            }
+    //        }
+    //    }
     
     func loadVideoPlayer() {
-        let player = AVPlayer(URL: videoURL)
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = self.view.frame
-        self.view.layer.addSublayer(playerLayer)
-        player.play()
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.youtubePlayer.frame = self.view.bounds
+            self.view.addSubview(self.youtubePlayer)
+            self.youtubePlayer.loadWithVideoId("hS5CfP8n_js")
+            self.youtubePlayer.playVideo()
+        }
+        
+        //        let player = AVPlayer(URL: videoURL)
+        //        let playerLayer = AVPlayerLayer(player: player)
+        //        playerLayer.frame = self.view.frame
+        //        self.view.layer.addSublayer(playerLayer)
+        //        player.play()
+    }
+    
+    func playVideo(notification: NSNotification) {
+        youtubePlayer.playVideo()
+    }
+    
+    func pauseVideo(notification: NSNotification) {
+        youtubePlayer.pauseVideo()
     }
     
     func loadCarousel() {

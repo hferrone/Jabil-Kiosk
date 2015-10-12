@@ -8,7 +8,13 @@
 
 import UIKit
 
+private var _sharedInstance = ExternalWindow()
+
 class ExternalWindow: UIWindow {
+    
+    class func sharedInstance() -> ExternalWindow {
+        return _sharedInstance
+    }
 
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
@@ -27,11 +33,13 @@ class ExternalWindow: UIWindow {
     }
     
     func configureExternalWindowRootVC(storyboardID: String) {
-        if storyboardID != "" {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let outputVC = storyboard.instantiateViewControllerWithIdentifier(storyboardID)
-            self.rootViewController = outputVC
-            self.makeKeyAndVisible()
-        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let outputVC = storyboard.instantiateViewControllerWithIdentifier(storyboardID)
+        self.rootViewController = outputVC
+        self.makeKeyAndVisible()
+    }
+    
+    func clearExternalWindowVC() {
+        self.rootViewController = nil
     }
 }

@@ -11,17 +11,17 @@ import AVKit
 import AVFoundation
 
 class R_VideoControlsViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func playOnButtonPressed(sender: AnyObject) {
+        self.view.window?.makeKeyAndVisible()
         NSNotificationCenter.defaultCenter().postNotificationName("playButtonTapped", object: self, userInfo: nil)
     }
     
     @IBAction func pauseOnButtonPressed(sender: AnyObject) {
         NSNotificationCenter.defaultCenter().postNotificationName("pauseButtonTapped", object: self, userInfo: nil)
     }
-
 }

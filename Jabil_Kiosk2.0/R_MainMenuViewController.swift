@@ -14,7 +14,6 @@ class R_MainMenuViewController: UIViewController {
 
     @IBOutlet weak var sourceMediaTableView: UITableView!
 
-    var externalWindow: ExternalWindow = ExternalWindow()
     var testItems = []
     var mediaArray: [Media]!
     var mediaLinkString: String!
@@ -34,7 +33,7 @@ class R_MainMenuViewController: UIViewController {
         let screens = UIScreen.screens()
         
         if (screens.count > 1) {
-            externalWindow.configureExternalWindowRootVC("OutputViewController")
+            ExternalWindow.sharedInstance().configureExternalWindowRootVC("OutputViewController")
         }
     }
 
