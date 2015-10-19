@@ -47,7 +47,6 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func clickLeftOnSlideshow(notification: NSNotification) {
-        print("leftclick")
         if itemIndex != 0 {
             changeCarouselPicture(itemIndex--)
         } else if itemIndex == 0 {
@@ -57,7 +56,6 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func clickRightOnSlideshow(notification: NSNotification) {
-        print("rightclick")
         if itemIndex != photosArray.count - 1 {
             changeCarouselPicture(itemIndex++)
         } else if itemIndex == photosArray.count - 1 {
