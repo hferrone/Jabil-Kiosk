@@ -404,6 +404,10 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="leftCarouselButton" destination="Lyf-sK-cSg" id="PzI-up-1Me"/>
+                        <outlet property="rightCarouselButton" destination="KWn-tY-HYU" id="HbF-oQ-6AU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hM-jX-Xf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

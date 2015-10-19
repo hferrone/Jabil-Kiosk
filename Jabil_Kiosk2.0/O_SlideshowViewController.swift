@@ -144,6 +144,7 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.changeCarouselPicture(self.itemIndex)
+                    NSNotificationCenter.defaultCenter().postNotificationName("imagesLoaded", object: self)
                 })
             }
         }
