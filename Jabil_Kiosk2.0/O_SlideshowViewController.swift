@@ -129,7 +129,6 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
     func returnCarouselImageArray() {
         AdobeAPI.sharedInstance().getMediaLink("\(mediaLink).content.json") { (returnedPhotosArray) -> Void in
             if let photoLinks = returnedPhotosArray {
-                print(photoLinks)
                 for imageLink in photoLinks {
                     let imageURL = NSURL(string: "\(self.baseURL)\(imageLink)")
                     print(imageURL)
@@ -137,7 +136,6 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
                         let image = UIImage(data: imageData)
                         self.photosArray.append(image!)
                     }
-                    print(self.photosArray)
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
