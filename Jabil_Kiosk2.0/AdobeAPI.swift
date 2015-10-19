@@ -14,7 +14,7 @@ private let _sharedInstace = AdobeAPI()
 
 class AdobeAPI: NSObject {
     
-    var baseURL = "http://usmiscqs001.bgtinside.com:4503"
+    var baseURL = "http://104.196.26.10:4503"
     var mediaLink = ""
     var mediaType = ""
     let linkEndpoint = ".content.json"
@@ -25,7 +25,7 @@ class AdobeAPI: NSObject {
     }
     
     func loadMedia(completion: (([Media]) -> Void)!) {
-        let urlEndpoint = "http://usmiscqs001.bgtinside.com:4503/content/jabilpoc/en/kiosk-one.menu.json"
+        let urlEndpoint = "\(baseURL)/content/jabilpoc/en/kiosk-one.menu.json"
         let url = NSURL(string: urlEndpoint)
         let session = NSURLSession.sharedSession()
         

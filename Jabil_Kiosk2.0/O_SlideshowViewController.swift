@@ -14,7 +14,7 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var outputContainerView: UIView!
     
-    var baseURL = "http://usmiscqs001.bgtinside.com:4503"
+    var baseURL = "http://104.196.26.10:4503"
     var mediaType = ""
     var mediaLink = ""
 
@@ -47,6 +47,7 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func clickLeftOnSlideshow(notification: NSNotification) {
+        print("leftclick")
         if itemIndex != 0 {
             changeCarouselPicture(itemIndex--)
         } else if itemIndex == 0 {
@@ -56,6 +57,7 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func clickRightOnSlideshow(notification: NSNotification) {
+        print("rightclick")
         if itemIndex != photosArray.count - 1 {
             changeCarouselPicture(itemIndex++)
         } else if itemIndex == photosArray.count - 1 {
@@ -69,7 +71,7 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
             case "document":
                 loadDocument()
             case "video":
-                loadVideoPlayer()
+                retrieveVideoURLFromAPI()
             case "carousel":
                 loadCarousel()
             default:
@@ -85,20 +87,22 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
         self.outputContainerView.addSubview(documentWebView)
     }
     
-        func retrieveVideoURLFromAPI() {
-            AdobeAPI.sharedInstance().getMediaLink(mediaLink) { (arrayFromAPI) -> Void in
-                if let mediaArray = arrayFromAPI {
-                    self.videoURL = mediaArray[0] as! String
-                    self.loadVideoPlayer()
-                }
+    func retrieveVideoURLFromAPI() {
+        AdobeAPI.sharedInstance().getMediaLink(mediaLink) { (arrayFromAPI) -> Void in
+            if let mediaArray = arrayFromAPI {
+                print(mediaArray)
+                self.videoURL = mediaArray[0] as! String
+                self.loadVideoPlayer()
             }
         }
+    }
     
     func loadVideoPlayer() {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.youtubePlayer.frame = self.view.bounds
             self.view.addSubview(self.youtubePlayer)
-            self.youtubePlayer.loadWithVideoId("M7lc1UVf-VE")
+            print(self.videoURL)
+            self.youtubePlayer.loadWithVideoId(self.videoURL)
         }
         
         //        let player = AVPlayer(URL: videoURL)
@@ -127,12 +131,15 @@ class O_SlideshowViewController: UIViewController, UIScrollViewDelegate {
     func returnCarouselImageArray() {
         AdobeAPI.sharedInstance().getMediaLink("\(mediaLink).content.json") { (returnedPhotosArray) -> Void in
             if let photoLinks = returnedPhotosArray {
-                
+                print(photoLinks)
                 for imageLink in photoLinks {
                     let imageURL = NSURL(string: "\(self.baseURL)\(imageLink)")
-                    let imageData = NSData(contentsOfURL: imageURL!)
-                    let image = UIImage(data: imageData!)
-                    self.photosArray.append(image!)
+                    print(imageURL)
+                    if let imageData = NSData(contentsOfURL: imageURL!) {
+                        let image = UIImage(data: imageData)
+                        self.photosArray.append(image!)
+                    }
+                    print(self.photosArray)
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in

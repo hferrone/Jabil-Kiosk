@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OOV-yV-or5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -313,8 +312,6 @@
                                         </variation>
                                         <connections>
                                             <action selector="moveSlideshowIndexLeft:" destination="Py5-aH-ISI" eventType="touchUpInside" id="iln-ct-2dr"/>
-                                            <action selector="pauseOnButtonPressed:" destination="ASA-2A-8rv" eventType="touchUpInside" id="sGL-Ac-pzN"/>
-                                            <action selector="playOnButtonPressed:" destination="ASA-2A-8rv" eventType="touchUpInside" id="dBB-nl-Ce5"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWn-tY-HYU">
@@ -338,7 +335,6 @@
                                         </variation>
                                         <connections>
                                             <action selector="moveSlideshowIndexRight:" destination="Py5-aH-ISI" eventType="touchUpInside" id="Tym-Xz-Hsa"/>
-                                            <action selector="playOnButtonPressed:" destination="ASA-2A-8rv" eventType="touchUpInside" id="ON6-Xy-rbr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -428,25 +424,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jabil-kiosk-BG" translatesAutoresizingMaskIntoConstraints="NO" id="zPs-EN-ybR">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgZ-ri-O5a">
-                                <rect key="frame" x="232" y="470" width="136" height="44"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="5AF-nd-33U">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="56"/>
-                                    </constraint>
-                                    <constraint firstAttribute="width" constant="136" id="iLx-dq-za0">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="173"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Load Media">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="loadMediaOnButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f2u-rm-R9Y"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load media and play it on the external TV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-5F-At4">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -473,9 +450,11 @@
                                 <rect key="frame" x="131" y="119" width="338" height="298"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="298" id="B4p-fo-I12"/>
+                                    <constraint firstAttribute="height" constant="298" id="B4p-fo-I12">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="465"/>
+                                    </constraint>
                                     <constraint firstAttribute="width" constant="338" id="lsG-Lo-AMY">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="450"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="760"/>
                                     </constraint>
                                 </constraints>
                                 <prototypes>
@@ -492,6 +471,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="338" height="67"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KG-hZ-cE5">
                                                     <rect key="frame" x="20" y="20" width="53" height="21"/>
@@ -499,33 +481,19 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVe-UR-7EJ">
-                                                    <rect key="frame" x="263" y="20" width="53" height="21"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="TVe-UR-7EJ" firstAttribute="baseline" secondItem="1KG-hZ-cE5" secondAttribute="baseline" id="5kE-T3-fxr"/>
                                                 <constraint firstItem="1KG-hZ-cE5" firstAttribute="leading" secondItem="dp3-7X-ukU" secondAttribute="leadingMargin" constant="12" id="8KX-fe-fc8">
-                                                    <variation key="heightClass=regular-widthClass=regular" constant="13"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="24"/>
                                                 </constraint>
                                                 <constraint firstItem="1KG-hZ-cE5" firstAttribute="top" secondItem="dp3-7X-ukU" secondAttribute="topMargin" constant="12" id="DQF-WX-aXN">
-                                                    <variation key="heightClass=regular-widthClass=regular" constant="5"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="14"/>
                                                 </constraint>
                                                 <constraint firstAttribute="bottomMargin" secondItem="BJf-gV-YQD" secondAttribute="bottom" constant="12" id="PCF-bB-I6Z">
                                                     <variation key="heightClass=regular-widthClass=regular" constant="6"/>
                                                 </constraint>
                                                 <constraint firstItem="BJf-gV-YQD" firstAttribute="leading" secondItem="dp3-7X-ukU" secondAttribute="leadingMargin" constant="-8" id="PJf-nf-CVB"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="BJf-gV-YQD" secondAttribute="trailing" constant="-8" id="SYm-aa-l3n"/>
-                                                <constraint firstItem="TVe-UR-7EJ" firstAttribute="centerY" secondItem="dp3-7X-ukU" secondAttribute="centerY" id="krn-hL-vfv">
-                                                    <variation key="heightClass=regular-widthClass=regular" constant="-7"/>
-                                                </constraint>
-                                                <constraint firstItem="1KG-hZ-cE5" firstAttribute="firstBaseline" secondItem="TVe-UR-7EJ" secondAttribute="firstBaseline" id="xG2-Yj-hpk"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="TVe-UR-7EJ" secondAttribute="trailing" constant="14" id="yM5-Mt-Y8N">
-                                                    <variation key="heightClass=regular-widthClass=regular" constant="12"/>
-                                                </constraint>
                                                 <constraint firstItem="BJf-gV-YQD" firstAttribute="top" secondItem="dp3-7X-ukU" secondAttribute="topMargin" constant="-8" id="zRg-dz-dll"/>
                                             </constraints>
                                             <variation key="default">
@@ -552,7 +520,6 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="subtitleLable" destination="TVe-UR-7EJ" id="OVw-kG-IqK"/>
                                             <outlet property="titleLabel" destination="1KG-hZ-cE5" id="qTE-pw-Q7Z"/>
                                         </connections>
                                     </tableViewCell>
@@ -562,19 +529,47 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Ln2-1p-NrD"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgZ-ri-O5a" customClass="BaseButton_Rounded" customModule="Jabil_Kiosk2_0" customModuleProvider="target">
+                                <rect key="frame" x="232" y="470" width="136" height="44"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5AF-nd-33U">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="44"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="136" id="iLx-dq-za0">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="137"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Load Media">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadMediaOnButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f2u-rm-R9Y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DPf-5F-At4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="146" id="2Jj-Mm-xq4"/>
+                            <constraint firstAttribute="trailing" secondItem="pZE-Ku-eYQ" secondAttribute="trailing" constant="20" id="1kg-jx-feE"/>
+                            <constraint firstItem="DPf-5F-At4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="146" id="2Jj-Mm-xq4">
+                                <variation key="heightClass=regular-widthClass=regular" constant="86"/>
+                            </constraint>
                             <constraint firstItem="DPf-5F-At4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Aw-Xq-qGU"/>
+                            <constraint firstItem="WgZ-ri-O5a" firstAttribute="top" secondItem="pZE-Ku-eYQ" secondAttribute="bottom" constant="29" id="5L0-v2-lnU">
+                                <variation key="heightClass=regular-widthClass=regular" constant="36"/>
+                            </constraint>
                             <constraint firstItem="pZE-Ku-eYQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BR9-To-mg1"/>
+                            <constraint firstItem="pZE-Ku-eYQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="IIC-nf-GfL"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zPs-EN-ybR" secondAttribute="bottom" id="PhT-Ia-ap0"/>
-                            <constraint firstItem="pZE-Ku-eYQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="RDh-q9-u2t"/>
+                            <constraint firstItem="pZE-Ku-eYQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="RDh-q9-u2t">
+                                <variation key="heightClass=regular-widthClass=regular" constant="18.5"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="zPs-EN-ybR" secondAttribute="trailing" id="VRn-fd-gip"/>
                             <constraint firstItem="zPs-EN-ybR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cNa-u3-TpA"/>
                             <constraint firstItem="WgZ-ri-O5a" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gkr-3Z-foS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WgZ-ri-O5a" secondAttribute="bottom" constant="22" id="nhr-Cj-Noe">
-                                <variation key="heightClass=regular-widthClass=regular" constant="155"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="37"/>
                             </constraint>
                             <constraint firstItem="zPs-EN-ybR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rhT-Se-6uY"/>
                         </constraints>
@@ -585,6 +580,9 @@
                             <mask key="constraints">
                                 <exclude reference="2Jj-Mm-xq4"/>
                                 <exclude reference="4Aw-Xq-qGU"/>
+                                <exclude reference="1kg-jx-feE"/>
+                                <exclude reference="IIC-nf-GfL"/>
+                                <exclude reference="5L0-v2-lnU"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -594,6 +592,9 @@
                             <mask key="constraints">
                                 <include reference="2Jj-Mm-xq4"/>
                                 <include reference="4Aw-Xq-qGU"/>
+                                <include reference="1kg-jx-feE"/>
+                                <include reference="IIC-nf-GfL"/>
+                                <include reference="5L0-v2-lnU"/>
                             </mask>
                         </variation>
                     </view>

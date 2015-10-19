@@ -57,7 +57,6 @@ extension R_MainMenuViewController: UITableViewDelegate, UITableViewDataSource {
         
         let media = mediaArray[indexPath.row]
         outputCell.titleLabel.text = media.menuItemText.uppercaseString
-        outputCell.subtitleLable.text = media.mediaType.uppercaseString
         
         return outputCell
     }
