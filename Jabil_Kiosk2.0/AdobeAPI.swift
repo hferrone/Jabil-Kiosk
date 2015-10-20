@@ -31,7 +31,7 @@ class AdobeAPI: NSObject {
         
         let task = session.dataTaskWithURL(url!) { (let data: NSData?, let response: NSURLResponse?, let error: NSError?) -> Void in
             if error != nil {
-                print(error?.localizedDescription)
+                print(error!.localizedDescription)
             } else {
                 
                 do {
@@ -83,9 +83,5 @@ class AdobeAPI: NSObject {
         }
         
         task.resume()
-    }
-    
-    func returnImageArray(linkArray: NSArray, completionHandler: (NSArray?) -> Void) {
-        
     }
 }
